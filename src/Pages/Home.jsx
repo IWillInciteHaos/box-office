@@ -1,20 +1,26 @@
 import {useState} from 'react'
-import {searchForShows} from '../api/tvmaze';
+import {searchForShows, searchForPeople} from '../api/tvmaze';
+import ActorsGrid from '../components/actors/ActorsGrid';
+import SearchForm from '../components/SearchForm';
+import ShowGrid from '../components/shows/ShowGrid';
 
 const Home = () => {
-    const [searchStr, setsearchStr] = useState('');
     const [apiData, setApiData] = useState(null);
     const [apiDataError, setApiDataError] = useState(null);
 
-    const onSearchInputChange = (ev) => {
-        setsearchStr(ev.target.value);
-    }
 
-    const onSearch = async (ev) => {
-        ev.preventDefault();
+    const onSearch = async ({q, searchOptions}) => {
         try {
             setApiDataError(null);
-            const result = await searchForShows(searchStr);
+
+            let result;
+//retult = await searchOptions === 'shows' ? searchForShows(q) : searchForPeople(q);
+            if(searchOptions === 'shows'){
+                result = await searchForShows(q);
+            }
+            else{
+                result = await searchForPeople(q);
+            }
             setApiData(result);
             
         } catch (error) {
@@ -28,18 +34,23 @@ const Home = () => {
             return <div> Error occured: {apiDataError.message}</div>
         }
 
-        if(apiData){
-            return apiData.map(data=> 
-                <div key={data.show.id}>{data.show.name}</div>)
+        if(apiData?.length === 0){
+            return<div>No results!</div>;
         }
-        return null
+
+        if(apiData ){
+            return apiData[0].show 
+            ? <ShowGrid shows={apiData}/>
+            //apiData.map(data=> <div key={data.show.id}>{data.show.name}</div>)
+            : <ActorsGrid actors={apiData}/>
+            //apiData.map(data=> <div key={data.person.id}>{data.person.name}</div>)
+        }
+        return
     }
 
+
     return (<div>
-        <form onSubmit={onSearch}>
-            <input type='text' value={searchStr} onChange={onSearchInputChange} />
-            <button type='submit' >Search</button>
-        </form>
+        <SearchForm onSearch={onSearch} />      
 
         <div>
             {renderApiData()}
