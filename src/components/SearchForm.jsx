@@ -1,10 +1,17 @@
-import  {useState} from 'react'
+import  {useState, useEffect} from 'react'
 
 const SearchForm =({onSearch}) =>{
     const [searchOptions, setSearchOptions] = useState('shows');
     const [searchStr, setsearchStr] = useState('');
 
-    
+    useEffect(() => {
+        console.log("search option changes".toUpperCase());
+
+        /*return () =>{
+            console.log("component unmounts".toUpperCase())
+        }*/
+    }, [searchOptions]);
+
     const onRadioChange = (ev) => {
         setSearchOptions(ev.target.value);
     }
