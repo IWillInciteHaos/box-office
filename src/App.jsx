@@ -3,6 +3,7 @@ import Home from './Pages/Home';
 import Starred from './Pages/Starred'
 import NoMatch from './Pages/NoMatch';
 import MainLayout from "./components/MainLayout";
+import Show from './Pages/Show';
 
 function App() {
   return (<BrowserRouter>
@@ -10,8 +11,10 @@ function App() {
         <Route element={<MainLayout />}>
         <Route path="/" element={ <Home/>} />
         <Route path="/starred" element={ <Starred/>} />
-        <Route path="*" element={<NoMatch />} />
       </Route>
+
+        <Route path='/show/:showId' element={<Show />}/>
+        <Route path="*" element={<NoMatch />} />
 
      {/* <Route path="/" element={<App />}>
         <Route index element={<Home />} />
