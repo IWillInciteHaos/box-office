@@ -1,5 +1,6 @@
 import ActrosCard from "./ActorsCard";
 import { FlexGrid } from "../common/FlexGrid";
+import NotFoundSrc from '../../lib/notFound.png'
 
 const ActorsGrid = ({actors}) => {
 
@@ -17,7 +18,7 @@ const ActorsGrid = ({actors}) => {
                         image={
                             data.person.image
                                 ? data.person.image.medium
-                                : "notFound.png"
+                                : NotFoundSrc
                         }
                     />)
             }

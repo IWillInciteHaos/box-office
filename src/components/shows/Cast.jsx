@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import NotFoundSrc from '../../lib/notFound.png'
 
 const Cast = (props) => {
     const {cast} = props;
@@ -10,10 +11,10 @@ const Cast = (props) => {
                     <div className="pic-wrapper">
                         <img src={person.image 
                             ? person.image.medium 
-                            : 'notFound.png'} 
+                            : NotFoundSrc} 
                         />
                     </div>
-                    <div className="actor">{person.name} | Character: {character.name}</div>
+                    <div className="">{person.name} | Character: {character.name}</div>
                 </div>
                 )
             }
