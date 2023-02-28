@@ -4,7 +4,16 @@ import ActorsGrid from '../components/actors/ActorsGrid';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import { useQuery } from '@tanstack/react-query';
-import { disable } from 'workbox-navigation-preload';
+import styled from 'styled-components';
+
+const Button = styled.button`
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid palevioletred;
+    color: palevioletred;
+    margin: 0 1em;
+    padding: 0.25em 1em;
+`;
 
 const Home = () => {
 
@@ -45,7 +54,8 @@ const Home = () => {
     }
 
 
-    return (<div>
+    return (
+    <div>
         <SearchForm onSearch={onSearch} />      
 
         <div>

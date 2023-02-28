@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getMultipleShowsById } from "../api/tvmaze";
 import ShowGrid from "../components/shows/ShowGrid";
-import { useStarredShows } from "../lib/UseStarredShows";
+import { useStarredShows } from "../lib/useStarredShows";
 
 const Starred = () => {
 

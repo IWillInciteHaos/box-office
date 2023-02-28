@@ -1,5 +1,5 @@
-import ShowCard from "./ShowCard"
-import { useStarredShows } from "../../lib/UseStarredShows";
+import ShowCard from "./ShowCard";
+import { useStarredShows } from "../../lib/useStarredShows";
 
 
 
