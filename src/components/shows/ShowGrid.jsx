@@ -1,5 +1,7 @@
 import ShowCard from "./ShowCard";
 import { useStarredShows } from "../../lib/useStarredShows";
+import styled from "styled-components";
+import {FlexGrid} from "../common/FlexGrid"
 
 
 
@@ -18,17 +20,22 @@ const ShowGrid = ( { shows }) => {
         }
     }
 
-    return <div>{shows.map(data => 
-        <ShowCard 
-            id = {data.show.id}
-            key={data.show.id} 
-            name={data.show.name}
-            image={data.show.image ? data.show.image.medium : '/notFound.png'}
-            summary = {data.show.summary}
-            onStarClick = {onStarClick}
-            isStarred={starredShows.includes(data.show.id)}
-        />
-    )}</div>
+    return (
+        <FlexGrid>
+            {shows.map(data => 
+                <ShowCard 
+                    id = {data.show.id}
+                    key={data.show.id} 
+                    name={data.show.name}
+                    image={data.show.image ? data.show.image.medium : '/notFound.png'}
+                    summary = {data.show.summary}
+                    onStarClick = {onStarClick}
+                    isStarred={starredShows.includes(data.show.id)}
+                />
+            )}
+        </FlexGrid>
+    )
 }
 
 export default ShowGrid;
+

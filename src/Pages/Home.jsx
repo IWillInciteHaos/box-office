@@ -4,16 +4,8 @@ import ActorsGrid from '../components/actors/ActorsGrid';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import { useQuery } from '@tanstack/react-query';
-import styled from 'styled-components';
+import { TextCenter } from '../components/common/TextCenter';
 
-const Button = styled.button`
-    background: transparent;
-    border-radius: 3px;
-    border: 2px solid palevioletred;
-    color: palevioletred;
-    margin: 0 1em;
-    padding: 0.25em 1em;
-`;
 
 const Home = () => {
 
@@ -36,11 +28,11 @@ const Home = () => {
 
     const renderApiData = () => {
         if(apiDataError){
-            return <div> Error occured: {apiDataError.message}</div>
+            return <TextCenter> Error occured: {apiDataError.message}</TextCenter>
         }
 
         if(apiData?.length === 0){
-            return<div>No results!</div>;
+            return<TextCenter>No results!</TextCenter>;
         }
 
         if(apiData ){
